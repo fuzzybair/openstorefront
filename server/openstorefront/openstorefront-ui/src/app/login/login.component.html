@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<h2>Log In</h2>
+<form id="loginForm" action="Login.action?Login" method="POST">
+    <div class="form-control">
+        <input type="hidden" id="gotoPageId" name="gotoPage"  />	
+        <span>Username</span>
+        <input type="text" name="username" id="username" placeholder="Username" autofocus>
+        <p id="usernameError" class="clearError errorText"></p>
+    </div>
+    <div class="form-control">
+        <span>Password</span>
+        <input type="password" name="password" id="password" placeholder="Password">
+        <p id="passwordError" class="clearError errorText"></p>
+    </div>
+    <input type="button" value="Log in" class="btn btn-primary" onclick="submitForm();" />
+</form>
+<div id="forgot-password-links">
+    <a href="resetPassword.jsp">Forgot Password</a> | <a href="forgotUser.jsp">Forgot Username</a>
+</div>

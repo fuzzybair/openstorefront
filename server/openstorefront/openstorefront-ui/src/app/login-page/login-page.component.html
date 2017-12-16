@@ -1,3 +1,73 @@
-<p>
-  login-page works!
-</p>
+<div class="page-header">
+    <div class="top">
+        <div class="spacer logo">
+            <img src="${branding.loginLogoUrl}" alt="logo"/>
+        </div>
+        <div class="login-header">	
+            <!--<h1>${branding.landingPageTitle}</h1>-->        
+        </div>
+        <div class="spacer">
+            <div id="menu"> <!-- Ext generated Menu --> </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="spacer">&nbsp;</div>
+        <div class="sub-header">
+            <!--<h2>${branding.landingPageBanner}</h2>-->
+        </div>
+        <div class="spacer">&nbsp;</div>
+    </div>
+</div>
+<div class="page-content">
+    <div id="browserWarning" class="browser-warning" >
+        <p>You are using an <strong>unsupported</strong> browser. The website may not work as intended.  Please switch to <strong>
+                <a class="browser-warning-link" href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a></strong> or <strong>
+                <a class="browser-warning-link" href="https://www.google.com/intl/en-US/chrome/browser/">Chrome</a></strong>, or <strong>
+                <a class="browser-warning-link" href="http://browsehappy.com/">upgrade your browser</a></strong> to improve your experience
+            <i class="fa fa-window-close-o fa-2x icon" aria-hidden="true"></i></p>	
+    </div>
+    <p id="serverError" class="clearError" >
+        Unable to connect to server or server failure.  Refresh page and try again.
+    </p>
+    <div class="auth-forms">
+        <div class="auth-content">
+            <div class="left col">
+                <div class="top">
+                    <!--${branding.loginContentBlock}-->
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+            <div class="right col">
+                <div>
+                    <div id="registration">
+                        <h2>Sign up for an Account.</h2>
+                        <ol>
+                            <li>Go to the Sign-Up page.</li>
+                            <li>Follow the steps on the screen to set up your account.</li>
+                            <li>Use the account you created to Sign In.</li>
+                        </ol>
+                        <a class="btn btn-primary" href="registration.jsp">Sign up</a>
+                        <a class="registration-video-link btn btn-primary">How to Register <i class="fa fa-play-circle-o"></i></a>
+                    </div>
+                    <div id="registration-video">
+                        built my own dialog box because Ext.window.Window does not have good responsive support 
+                        <div class="dialog">
+                            <div class="header"></div>
+                            <div class="content"></div>
+                            <div class="buttons"><input class="btn btn-primary" type="button" value="Close" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <app-login></app-login>
+                </div>
+            </div>
+        </div>	
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-content">
+        <!--${branding.loginFooter}-->
+    </div>
+</div>
