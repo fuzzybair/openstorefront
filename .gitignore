@@ -64,3 +64,4 @@ project*.properties
 /server/openstorefront/system-tests/felix-cache/
 /server/openstorefront/openstorefront-ui/nbproject/private/
 /server/openstorefront/openstorefront-angular/nbproject/private/
+/server/openstorefront/openstorefront-extjs/nbproject/private/
