@@ -62,6 +62,4 @@ project*.properties
 *.orig
 /server/openstorefront/system-tests/tomcat.7980/
 /server/openstorefront/system-tests/felix-cache/
-/server/openstorefront/openstorefront-ui/nbproject/private/
-/server/openstorefront/openstorefront-angular/nbproject/private/
-/server/openstorefront/openstorefront-extjs/nbproject/private/
+/**/webapp/ng
