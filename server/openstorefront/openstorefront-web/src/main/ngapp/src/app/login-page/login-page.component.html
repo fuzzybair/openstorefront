@@ -1,10 +1,10 @@
 <div class="page-header">
     <div class="top">
         <div class="spacer logo">
-            <img src="${branding.loginLogoUrl}" alt="logo"/>
+            <img *ngIf="getLogo()" [src]="getLogo()" alt="logo"/>
         </div>
         <div class="login-header">	
-            <!--<h1>${branding.landingPageTitle}</h1>-->        
+            <h1>{{getTitle()}}</h1>      
         </div>
         <div class="spacer">
             <div id="menu"> <!-- Ext generated Menu --> </div>
@@ -13,7 +13,7 @@
     <div class="bottom">
         <div class="spacer">&nbsp;</div>
         <div class="sub-header">
-            <!--<h2>${branding.landingPageBanner}</h2>-->
+            <h2>{{getBanner()}}</h2>
         </div>
         <div class="spacer">&nbsp;</div>
     </div>
@@ -32,8 +32,7 @@
     <div class="auth-forms">
         <div class="auth-content">
             <div class="left col">
-                <div class="top">
-                    <!--${branding.loginContentBlock}-->
+                <div class="top" [innerHtml]="getContent()" >
                 </div>
                 <div class="bottom">
                 </div>
@@ -67,7 +66,5 @@
     </div>
 </div>
 <div class="footer">
-    <div class="footer-content">
-        <!--${branding.loginFooter}-->
-    </div>
+    <div class="footer-content" [innerHTML]="getFooter()"></div>
 </div>

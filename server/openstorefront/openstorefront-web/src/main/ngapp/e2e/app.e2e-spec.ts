@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('openstorefront-ui App', () => {
+describe('Ngapp App', () => {
   let page: AppPage;
 
   beforeEach(() => {

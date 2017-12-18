@@ -29,9 +29,8 @@ export class BrandingService {
 
     getCurrentBranding<Branding>(): Observable<Branding> {
         const url = `${this.brandingUrl}/current`;
-        return this.http.get<Branding[]>(url).pipe(
-            map(branding => branding[0]),
-            tap(branding => this.log(`fetched current branding`)),
+        return this.http.get<Branding>(url).pipe(
+			tap(data => this.log(`fetched current branding`)),
             catchError(this.handleError<Branding>('getCurrentBranding'))
         );
     }

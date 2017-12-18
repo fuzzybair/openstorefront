@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BrandingService} from '../services/branding.service';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Branding} from '../Models/Branding';
 
 
@@ -10,7 +11,7 @@ import {Branding} from '../Models/Branding';
 })
 export class LoginPageComponent implements OnInit {
 
-    private branding;
+    private branding:Branding;
     private baseUrl = 'http://localhost:8080/openstorefront/';  // URL to storefront
 
     constructor(public brandingServcie: BrandingService) {}
@@ -19,13 +20,21 @@ export class LoginPageComponent implements OnInit {
         this.getBranding();
     }
 
-    getBranding(): void {
-         this.brandingServcie.getCurrentBranding()
-            .subscribe(data => this.branding = data,
+    getBranding<Branding>(): void {
+         this.brandingServcie.getCurrentBranding<Branding>()
+		 .subscribe(data => this.branding = data,
             error=> this.log(error));
     }
     
     // ####### Branding ########
+    getTitle():string{
+        return this.branding.landingPageTitle;
+    }
+	
+    getBanner():string{
+        return this.branding.landingPageBanner;
+    }
+	
     getFooter():string{
         return this.branding.loginFooter;
     }
@@ -35,18 +44,24 @@ export class LoginPageComponent implements OnInit {
     }
     
     getLogo(): string {
-        return this.baseUrl + decodeURI(this.branding.loginLogoUrl);
+        var url = this.baseUrl + this.branding.loginLogoUrl;
+		if(this.branding && this.branding.loginLogoUrl)
+		{
+			console.log(`url is ${url}`);
+			return url;
+		}
+		return "";
     }
     
     getOverviewVideo() : string {
-        return this.baseUrl + decodeURI(this.branding.loginOverviewVideoUrl);
+        return this.baseUrl + this.branding.loginOverviewVideoUrl;
     }
     
     getOverviewVideoPoster():string{
-        return this.baseUrl + decodeURI(this.branding.loginOverviewVideoPosterUrl);
+        return this.baseUrl + this.branding.loginOverviewVideoPosterUrl;
     }
     getRegistrationVideo(): string{
-        return this.baseUrl + decodeURI(this.branding.loginRegistrationVideoUrl);
+        return this.baseUrl + this.branding.loginRegistrationVideoUrl;
     }
     
     
