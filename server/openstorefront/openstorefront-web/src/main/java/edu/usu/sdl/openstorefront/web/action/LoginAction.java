@@ -24,6 +24,7 @@ import edu.usu.sdl.openstorefront.security.HeaderRealm;
 import edu.usu.sdl.openstorefront.security.SecurityUtil;
 import edu.usu.sdl.openstorefront.security.UserContext;
 import edu.usu.sdl.openstorefront.web.init.ShiroAdjustedFilter;
+import edu.usu.sdl.openstorefront.web.util.ViewType;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.text.MessageFormat;
@@ -102,7 +103,7 @@ public class LoginAction
 			}
 		}
 		getContext().getRequest().getSession().setAttribute(ShiroAdjustedFilter.REFERENCED_URL_ATTRIBUTE, gotoPage);
-		return new ForwardResolution("/login.jsp").addParameter("gotoPage", gotoPage);
+		return new ForwardResolution(ViewType.LOGIN.toString()).addParameter("gotoPage", gotoPage);
 	}
 
 	private Resolution handleLoginRedirect()
@@ -218,12 +219,12 @@ public class LoginAction
 		if (SecurityUtil.isLoggedIn() == false) {
 			return new RedirectResolution(LoginAction.class);
 		}
-		
+
 		SecurityUtil.logout(getContext().getRequest(), getContext().getResponse());
 
-		String logoutUrl = PropertiesManager.getValue(PropertiesManager.KEY_LOGOUT_URL, "/login.jsp");
+		String logoutUrl = PropertiesManager.getValue(PropertiesManager.KEY_LOGOUT_URL, ViewType.LOGIN.toString());
 		if (StringUtils.isBlank(logoutUrl)) {
-			logoutUrl = "/login.jsp";
+			logoutUrl = ViewType.LOGIN.toString();
 		}
 		if (logoutUrl.toLowerCase().startsWith("http")) {
 			return new RedirectResolution(logoutUrl, false);

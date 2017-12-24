@@ -39,4 +39,5 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-editor-indent.CodeStyle.usedProfile>project</org-netbeans-modules-editor-indent.CodeStyle.usedProfile>
         <netbeans.hint.license>gpl30</netbeans.hint.license>
     </properties>
+    <libraries xmlns="http://www.netbeans.org/ns/cdnjs-libraries/1"/>
 </project-shared-configuration>
