@@ -45,6 +45,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+nbactions.xml
 
 # End of https://www.gitignore.io/api/java,maven,netbeans
 
@@ -63,3 +64,5 @@ project*.properties
 /server/openstorefront/system-tests/tomcat.7980/
 /server/openstorefront/system-tests/felix-cache/
 /server/openstorefront/openstorefront-ngapp/nbproject/private/
+/server/openstorefront/NodeJsWebApplication/nbproject/private/
+/server/openstorefront/openstorefront-web/src/main/webapp/scripts/ngApp/
