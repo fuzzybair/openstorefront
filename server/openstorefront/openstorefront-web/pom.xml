@@ -176,6 +176,11 @@
 		<version>2.21</version>
 		<scope>test</scope>
 	</dependency>
+	 <dependency>
+	  <groupId>${project.groupId}</groupId>
+	  <artifactId>openstorefront-ngapp</artifactId>
+	  <version>${project.version}</version>
+	 </dependency>
 	</dependencies>
 
 	<build>

@@ -9,8 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "copy": "xcopy \"dist\" \"..\\openstorefront-web\\src\\main\\webapp\\scripts\\ngApp\" /i /s /r /y /c",
-    "dist": "npm run build && npm run copy"
+    "copy-win": "xcopy \"dist\" \"..\\..\\..\\..\\openstorefront-web\\src\\main\\webapp\\scripts\\ngApp\" /i /s /r /y /c",
+    "dist-win": "npm run build && npm run copy-win",
+    "copy-linux": "cp -r \"dist\" \"../../../../openstorefront-web/src/main/webapp/scripts/ngApp\"",
+    "dist-linux": "npm run build && npm run copy-linux"
   },
   "private": true,
   "dependencies": {
