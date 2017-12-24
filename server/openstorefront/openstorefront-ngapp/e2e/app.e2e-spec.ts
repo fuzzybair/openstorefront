@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('openstorefront-web App', () => {
+describe('openstorefront App', () => {
   let page: AppPage;
 
   beforeEach(() => {
