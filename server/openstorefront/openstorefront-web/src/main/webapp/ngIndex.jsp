@@ -17,23 +17,38 @@
  * See NOTICE.txt for more information.
  */
 --%>
+<%-- 
+    Document   : ngIndex
+    Created on : Dec 24, 2017, 4:47:03 PM
+    Author     : kentb
+--%>
+<%@page import="edu.usu.sdl.openstorefront.core.entity.Branding"%>
+<%@page import="edu.usu.sdl.openstorefront.service.ServiceProxy"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+	Branding branding = ServiceProxy.getProxy().getBrandingService().getCurrentBrandingView();
+	request.setAttribute("branding", branding);
+%>
+
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
+		<!-- ***USER-NOT-LOGIN*** -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> - My Jersey And Angular Application</title>
-
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
+		<link rel="icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
+		<title>${branding.getApplicationName()}</title>
 		<base href="/openstorefront">
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 	</head>
 	<body>
 	<app-root>Loading...</app-root>
-	<script type="text/javascript" src="/openstorefront/scripts/ngApp/inline.bundle.js"></script>
-	<script type="text/javascript" src="/openstorefront/scripts/ngApp/polyfills.bundle.js"></script>
-	<script type="text/javascript" src="/openstorefront/scripts/ngApp/styles.bundle.js"></script>
-	<script type="text/javascript" src="/openstorefront/scripts/ngApp/vendor.bundle.js"></script>
-	<script type="text/javascript" src="/openstorefront/scripts/ngApp/main.bundle.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/ngApp/inline.bundle.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/ngApp/polyfills.bundle.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/ngApp/styles.bundle.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/ngApp/vendor.bundle.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/ngApp/main.bundle.js"></script>
 </body>
 </html>

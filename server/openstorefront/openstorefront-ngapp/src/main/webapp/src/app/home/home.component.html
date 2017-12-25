@@ -1,0 +1,91 @@
+<div *ngIf="brandingObs$ | async as branding; else loading">
+		<div class="page-header">
+			<div class="top">
+				<div class="spacer logo">
+					<img *ngIf="branding.loginLogoUrl" [src]="branding.loginLogoUrl" alt="logo"/>
+				</div>
+				<div class="login-header">	
+					<h1>{{branding.landingPageTitle}}</h1>        
+				</div>
+				<div class="spacer">
+					<div id="menu"> <!-- Ext generated Menu --> </div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="spacer">&nbsp;</div>
+				<div class="sub-header">
+					<h2>{{branding.landingPageBanner}}</h2>
+				</div>
+				<div class="spacer">&nbsp;</div>
+			</div>
+		</div>
+		<div class="page-content">
+<!--			<div id="browserWarning" class="browser-warning" >
+				<p>You are using an <strong>unsupported</strong> browser. The website may not work as intended.  Please switch to <strong>
+						<a class="browser-warning-link" href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a></strong> or <strong>
+						<a class="browser-warning-link" href="https://www.google.com/intl/en-US/chrome/browser/">Chrome</a></strong>, or <strong>
+						<a class="browser-warning-link" href="http://browsehappy.com/">upgrade your browser</a></strong> to improve your experience
+					<i class="fa fa-window-close-o fa-2x icon" aria-hidden="true"></i></p>	
+			</div>-->
+			<p id="serverError" class="clearError" >
+				Unable to connect to server or server failure.  Refresh page and try again.
+			</p>
+			<div class="auth-forms">
+				<div class="auth-content">
+					<div class="left col">
+						<div class="top" [innerHTML]="branding.loginContentBlock"></div>
+						<div class="bottom">
+						</div>
+					</div>
+					<div class="right col">
+						<div>
+							<div id="registration">
+								<h2>Sign up for an Account.</h2>
+								<ol>
+									<li>Go to the Sign-Up page.</li>
+									<li>Follow the steps on the screen to set up your account.</li>
+									<li>Use the account you created to Sign In.</li>
+								</ol>
+								<a class="btn btn-primary" href="registration.jsp">Sign up</a>
+								<a *ngIf="branding.loginOverviewVideoUrl" class="registration-video-link btn btn-primary">How to Register <i class="fa fa-play-circle-o"></i></a>
+							</div>
+							<div *ngIf="branding.loginOverviewVideoUrl" id="registration-video">
+								<!-- built my own dialog box because Ext.window.Window does not have good responsive support -->
+								<div class="dialog">
+									<div class="header"></div>
+									<div class="content"></div>
+									<div class="buttons"><input class="btn btn-primary" type="button" value="Close" /></div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<h2>Log In</h2>
+							<form id="loginForm" action="Login.action?Login" method="POST">
+								<div class="form-control">
+									<input type="hidden" id="gotoPageId" name="gotoPage"  />	
+									<span>Username</span>
+									<input type="text" name="username" id="username" placeholder="Username" autofocus autocomplete="false">
+									<p id="usernameError" class="clearError errorText"></p>
+								</div>
+								<div class="form-control">
+									<span>Password</span>
+									<input type="password" name="password" id="password" placeholder="Password" autocomplete="false" onkeypress="if (event.keyCode === 13) 
+												keyPressLogin();
+											}
+										   ">
+									<p id="passwordError" class="clearError errorText"></p>
+								</div>
+								<input type="button" value="Log in" class="btn btn-primary" onclick="submitForm();" />
+							</form>
+							<div id="forgot-password-links">
+								<a href="resetPassword.jsp">Forgot Password</a> | <a href="forgotUser.jsp">Forgot Username</a>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="footer">
+			<div class="footer-content" [innerHTML] ="branding.loginFooter"></div>
+		</div>
+</div>
