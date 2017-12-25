@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
 	ngOnInit() {
 		this.brandingObs$ = this.brandingServcie.getCurrentBranding<Branding>();
 	}
-
+	signUp():void {
+		
+	}
 	/** Log a HeroService message with the MessageService */
 	private log(message: string) {
 		console.log("BrandingService: " +message);

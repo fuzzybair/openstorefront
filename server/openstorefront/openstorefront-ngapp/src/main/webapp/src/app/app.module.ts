@@ -1,26 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http'
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule, HttpClient} from '@angular/common/http'
 
 
-import { AppRoutingModule } from './app-routing.module';
+import {InputTextModule, PasswordModule, ButtonModule} from 'primeng/primeng';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {AppRoutingModule} from './app-routing.module';
 
-import { BrandingService } from './services/branding.service';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+
+import {BrandingService} from './services/branding.service';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-	HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [BrandingService, HttpClientModule, HttpClient],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		LoginComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		AppRoutingModule,
+		InputTextModule,
+		PasswordModule,
+		ButtonModule
+	],
+	providers: [BrandingService, HttpClientModule, HttpClient],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

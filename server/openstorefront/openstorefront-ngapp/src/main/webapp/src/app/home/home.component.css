@@ -1,14 +1,3 @@
-
-.x-body {
-	min-width:300px;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	height: 100vh;
-}
-
 .page-header,.footer {
 	flex-shrink: 0;
 }
@@ -67,20 +56,6 @@
 	flex-shrink:0;
 }
 
-h1, .h1 {
-	font-size: 36px;
-}
-h1, h2, h3 {
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-weight: 500;
-	line-height: 1.1;
-	color: inherit;
-}
-
 .auth-content h1 {
 	color: white;
 }
@@ -124,52 +99,6 @@ a.btn-primary {
 {
 	display: block;
 }
-.form-control input {
-	display: block;
-	width: 90%;
-	height: 34px;
-	padding: 6px 12px;
-	font-size: 14px;
-	line-height: 1.428571429;
-	color: rgb(85, 85, 85);
-	vertical-align: middle;
-	background-color: white;
-	background-image: none;
-	border: 1px solid rgb(204, 204, 204);
-	border-image-source: initial;
-	border-image-slice: initial;
-	border-image-width: initial;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	border-radius: 4px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
-	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
-	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	-webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.loginError {
-	display: block !important;
-	color: red;
-	padding: 5px;
-	width: 100%;
-	text-align: center; 
-	border: red 2px solid;
-	font-size: 14px;
-}
-.clearError {
-	display: none;
-}
-.showError {
-	display: block;
-}
-input.errorField {
-	border: red 2px solid;
-}
-.errorText{
-	color:red;
-	font-weight:bold;
-}
-
 .page-header .top {
 	width: 100%;
 	height: 56px;
@@ -325,27 +254,7 @@ input.errorField {
 	width:100%;
 	padding-right:0px;
 }
-
-.no-registration-video .registration-video-link{
-	display: none;
-}
-.no-registration #registration{
-	display: none;
-}
-.no-overview .left.col .bottom {
-	display:none;
-}
-
-.no-content .left.col .top {
-	display:none;
-}
-.no-logo .page-header .logo img, .no-logo .page-header .bottom .spacer {
-	display:none;
-}
-.no-logo.no-menu .spacer{
-	display:none;
-}
-
+/*
 @media (max-width: 1160px){
 	.page-header .spacer{
 		width:150px;
@@ -430,4 +339,4 @@ input.errorField {
 		height:27px;
 		padding: 2px;
 	}
-}
+}*/

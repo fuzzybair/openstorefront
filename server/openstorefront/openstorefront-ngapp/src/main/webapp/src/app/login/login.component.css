@@ -1,0 +1,43 @@
+
+.loginError {
+	display: block !important;
+	color: red;
+	padding: 5px;
+	width: 100%;
+	text-align: center; 
+	border: red 2px solid;
+	font-size: 14px;
+}
+.ui-inputtext {
+	width: 90%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgb(85, 85, 85);
+	vertical-align: middle;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 4px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	-webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control
+{
+	padding-bottom:20px;
+}
+.clearError {
+	display: none;
+}
+.showError {
+	display: block;
+}
+input.errorField {
+	border: red 2px solid;
+}
+.errorText{
+	color:red;
+	font-weight:bold;
+}

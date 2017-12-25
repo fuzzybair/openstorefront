@@ -27,9 +27,9 @@
 						<a class="browser-warning-link" href="http://browsehappy.com/">upgrade your browser</a></strong> to improve your experience
 					<i class="fa fa-window-close-o fa-2x icon" aria-hidden="true"></i></p>	
 			</div>-->
-			<p id="serverError" class="clearError" >
+<!--			<p id="serverError" class="clearError" >
 				Unable to connect to server or server failure.  Refresh page and try again.
-			</p>
+			</p>-->
 			<div class="auth-forms">
 				<div class="auth-content">
 					<div class="left col">
@@ -46,41 +46,19 @@
 									<li>Follow the steps on the screen to set up your account.</li>
 									<li>Use the account you created to Sign In.</li>
 								</ol>
-								<a class="btn btn-primary" href="registration.jsp">Sign up</a>
-								<a *ngIf="branding.loginOverviewVideoUrl" class="registration-video-link btn btn-primary">How to Register <i class="fa fa-play-circle-o"></i></a>
+								<button pButton class="ui-button" label="Sign up" (click)="signUp()"></button>
+								<button pButton *ngIf="branding.loginOverviewVideoUrl" class="registration-video-link ui-button" label="How to Register" icon="fa-play-circle-o" iconPos="right"></button>
 							</div>
 							<div *ngIf="branding.loginOverviewVideoUrl" id="registration-video">
 								<!-- built my own dialog box because Ext.window.Window does not have good responsive support -->
 								<div class="dialog">
 									<div class="header"></div>
 									<div class="content"></div>
-									<div class="buttons"><input class="btn btn-primary" type="button" value="Close" /></div>
+									<div class="buttons"><button pButton class="ui-button" type="button" label="Close" (click)="closeDialog()"></button></div>
 								</div>
 							</div>
 						</div>
-						<div>
-							<h2>Log In</h2>
-							<form id="loginForm" action="Login.action?Login" method="POST">
-								<div class="form-control">
-									<input type="hidden" id="gotoPageId" name="gotoPage"  />	
-									<span>Username</span>
-									<input type="text" name="username" id="username" placeholder="Username" autofocus autocomplete="false">
-									<p id="usernameError" class="clearError errorText"></p>
-								</div>
-								<div class="form-control">
-									<span>Password</span>
-									<input type="password" name="password" id="password" placeholder="Password" autocomplete="false" onkeypress="if (event.keyCode === 13) 
-												keyPressLogin();
-											}
-										   ">
-									<p id="passwordError" class="clearError errorText"></p>
-								</div>
-								<input type="button" value="Log in" class="btn btn-primary" onclick="submitForm();" />
-							</form>
-							<div id="forgot-password-links">
-								<a href="resetPassword.jsp">Forgot Password</a> | <a href="forgotUser.jsp">Forgot Username</a>
-							</div>
-						</div>
+						<app-login></app-login>
 					</div>
 				</div>	
 			</div>
