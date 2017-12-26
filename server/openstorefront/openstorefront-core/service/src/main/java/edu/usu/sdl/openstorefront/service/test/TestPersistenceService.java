@@ -236,7 +236,8 @@ public class TestPersistenceService implements PersistenceService
 	@Override
 	public <T> T deattachAll(T entity)
 	{
-		throw new UnsupportedOperationException("Not supported yet. deattachAll(T entity)");
+		//nothing different between attached ad detached test items
+		return entity;
 	}
 
 	@Override
