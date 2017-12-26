@@ -25,12 +25,10 @@
 <%@page import="edu.usu.sdl.openstorefront.core.entity.Branding"%>
 <%@page import="edu.usu.sdl.openstorefront.service.ServiceProxy"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%
 	Branding branding = ServiceProxy.getProxy().getBrandingService().getCurrentBrandingView();
 	request.setAttribute("branding", branding);
 %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,8 +38,7 @@
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
 		<link rel="icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
 		<title>${branding.getApplicationName()}</title>
-		<base href="/openstorefront">
-
+		<base href="${pageContext.request.contextPath}/">
 	</head>
 	<body>
 	<app-root>Loading...</app-root>
