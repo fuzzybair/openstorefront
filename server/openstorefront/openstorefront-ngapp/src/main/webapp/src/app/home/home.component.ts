@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {BrandingService} from '../services/branding.service';
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {catchError, map, tap} from 'rxjs/operators';
 
+import {BrandingService} from '../services/branding.service';
 import {Branding} from '../models/Branding';
 
 

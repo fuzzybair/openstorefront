@@ -29,6 +29,9 @@
 	padding-top:10px;
 	padding-bottom:10px;
 }
+.form-control .ui-float-label{
+	padding-bottom:10px;
+}
 .clearError {
 	display: none;
 }

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body {
 	min-width:300px;
 	display: flex;
 	flex-direction: column;
@@ -20,4 +20,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-weight: 500;
 	line-height: 1.1;
 	color: inherit;
+}
+.ui-widget.ui-button {
+	background-color: #7c7d7d; 
+	border-color: #7c7d7d; 
+}
+.ui-button.ui-button-secondary.ui-state-default{
+	background-color: #f6f6f6;
 }

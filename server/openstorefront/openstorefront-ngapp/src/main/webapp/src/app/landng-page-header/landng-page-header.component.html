@@ -1,0 +1,10 @@
+<div class="logo">
+	<img *ngIf="branding.secondaryLogoUrl" [src]="branding.secondaryLogoUrl" alt="logo"/>
+</div>
+<div class="title">	
+	<h1>{{branding.landingPageTitle}}</h1>        
+</div>
+<div class="menu">
+	<button type="button" pButton icon="fa fa-envelope-o" label="Notifications"></button>
+	<app-user-menu></app-user-menu>
+</div>
