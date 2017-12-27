@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminEntryComponent implements OnInit {
 
+	public pageTitle:string = "Manage Entries";
+	public pageToolTip:string = "This tool allows for manipulating all data related to an entry.";
   constructor() { }
 
   ngOnInit() {

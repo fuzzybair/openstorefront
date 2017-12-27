@@ -1,21 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {catchError, map, tap} from 'rxjs/operators';
+
+import {MenuItem} from 'primeng/primeng';
+
+import {BrandingService} from '../services/branding.service';
+import {Branding} from '../models/Branding';
 
 @Component({
-  selector: 'app-admin-tools',
-  templateUrl: './admin-tools.component.html',
-  styleUrls: ['./admin-tools.component.css']
+	selector: 'app-admin-tools',
+	templateUrl: './admin-tools.component.html',
+	styleUrls: ['./admin-tools.component.css']
 })
 export class AdminToolsComponent implements OnInit {
-	public pageTitle:string = "Dashboard";
-	public pageToolTip:string = "Displays widgets and allows for quick mashup of data.";
+	private sub: any;
+	private data: any;
+	public brandingObs$: Observable<Branding>;
+	public dataPages: MenuItem[];
+	public evaluationPages: MenuItem[];
+	public applicationPages: MenuItem[];
+	constructor(public brandingServcie: BrandingService, private route: ActivatedRoute) {}
 
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit() {
-//	  this.sub = this.route.params.subscribe(params => {
-//       this.id = +params['id']; // (+) converts string 'id' to a number
-//    });
-  }
+	ngOnInit() {
+		this.brandingObs$ = this.brandingServcie.getCurrentBranding<Branding>();
+		this.setMenu();
+//		this.sub = this.route.params.subscribe(params => {
+//			this.data = params;
+//		});
+	}
+	private setMenu():void{
+		this.dataPages = [
+			{label: 'Entries', routerLink: ['/AdminTool.action/Entry']},
+			{label: 'TBD'}
+		];
+		this.evaluationPages = [
+			{label: 'TBD'}
+		];
+		this.applicationPages = [
+			{label: 'TBD'}
+		];
+	}
 
 }

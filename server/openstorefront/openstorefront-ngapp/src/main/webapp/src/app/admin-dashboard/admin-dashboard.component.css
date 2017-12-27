@@ -13,23 +13,7 @@
 	padding-left: 20px;
 	font-weight: bold;
 }
-
 .buttonBar{
-	flex-grow: 0;
-	flex-shrink: 0;
-	height: 56px;
-	display: flex;
-    align-items: center;
-	justify-content: space-between;
-}
-.buttonBar .left, .buttonBar .right{
-	flex-grow: 0;
-	flex-shrink: 0;
-	height: 56px;
-	display: flex;
-    align-items: center;
-}
-.menuBar{
 	flex-grow: 0;
 	flex-shrink: 0;
 	height: 56px;

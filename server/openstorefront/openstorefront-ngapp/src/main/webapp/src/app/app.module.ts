@@ -12,7 +12,9 @@ import {
 	ButtonModule,
 	MenuModule,
 	MessageModule,
-	TooltipModule
+	TooltipModule,
+	DataTableModule,
+	SharedModule
 } from 'primeng/primeng';
 //####### Storefront items ########
 //Routing
@@ -31,8 +33,9 @@ import {EvaluationToolsComponent} from './evaluation-tools/evaluation-tools.comp
 import {LandngPageHeaderComponent} from './landng-page-header/landng-page-header.component';
 import {LandngPageFooterComponent} from './landng-page-footer/landng-page-footer.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
-import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminEntryComponent } from './admin-entry/admin-entry.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
 	return platformLocation.getBaseHrefFromDOM();
@@ -49,9 +52,10 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		EvaluationToolsComponent,
 		LandngPageHeaderComponent,
 		LandngPageFooterComponent,
-		UserMenuComponent,
-		AdminHeaderComponent,
-		AdminEntryComponent
+		UserMenuComponent,	
+		AdminEntryComponent,
+		PageNotFoundComponent,
+		AdminDashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -63,7 +67,9 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		ButtonModule,
 		MenuModule,
 		MessageModule,
-		TooltipModule
+		TooltipModule,		
+		DataTableModule,
+		SharedModule
 	],
 	providers: [
 		BrandingService,
