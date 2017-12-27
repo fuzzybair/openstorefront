@@ -72,7 +72,7 @@ public class AuthenticationServiceTest extends JerseyShiroTest
 		Response response = target("v1/service/authentication/login")
 				.request()
 				.header(HttpHeaders.AUTHORIZATION, getBasicAuthHeader())
-				.put(Entity.form(idMap));
+				.post(Entity.form(idMap));
 		Assert.assertEquals(200, response.getStatus());
 		UserAgentManager.cleanup();
 	}

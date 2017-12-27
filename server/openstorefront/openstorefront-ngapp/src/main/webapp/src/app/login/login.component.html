@@ -1,19 +1,21 @@
 <div>
+	<input type="hidden" id="{{gotoPageId}}" name="gotoPage" />	
 	<h2>Log In</h2>
-	<form id="loginForm" action="Login.action?Login" method="POST">
-		<div class="form-control">
-			<input type="hidden" id="{{gotoPageId}}" name="gotoPage" />	
-			<span>Username</span>
-			<input pInputText class="ui-inputtext" type="text" name="username" id="username" placeholder="Username" autofocus autocomplete="false"/>
-			<p id="usernameError" class="clearError errorText"></p>
-		</div>
-		<div class="form-control">
-			<span>Password</span>
-			<input pPassword class="ui-inputtext" type="password" name="password" id="password" placeholder="Password" autocomplete="false" W/>
-			<p id="passwordError" class="clearError errorText"></p>
-		</div>
-		<button pButton class="ui-button" (click)="submitForm()" label="Log in"></button>
-	</form>
+	<div class="form-control">
+		<span class="ui-float-label">
+			<input id="float-input" type="text" pInputText [(ngModel)]="username"> 
+			<label for="float-input">Username</label>
+		</span>
+		<p id="usernameError" class="clearError errorText"></p>
+	</div>
+	<div class="form-control">
+		<span class="ui-float-label">
+			<input id="float-input" type="text" pInputText [(ngModel)]="password"> 
+			<label for="float-input">Password</label>
+		</span>
+		<p id="passwordError" class="clearError errorText"></p>
+	</div>
+	<button pButton class="ui-button" (click)="login()" label="Log in"></button>
 	<div id="forgot-password-links">
 		<a href="resetPassword.jsp">Forgot Password</a> | <a href="forgotUser.jsp">Forgot Username</a>
 	</div>

@@ -1,6 +1,6 @@
-import {Injectable, Inject } from "@angular/core";
+import {Injectable, Inject} from "@angular/core";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { APP_BASE_HREF } from "@angular/common";
+import {APP_BASE_HREF} from "@angular/common";
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -15,23 +15,21 @@ const httpOptions = {
 @Injectable()
 export class BrandingService {
 
-	private brandingUrl = this.baseHref + 'api/v1/resource/branding';  // URL to web api
+	private restUrl = this.baseHref + 'api/v1/resource/branding';  // URL to web api
 
-	constructor(private http: HttpClient, @Inject(APP_BASE_HREF) private baseHref: string) {
-        this.log(`APP_BASE_HREF is ${this.baseHref}`);
-    }
+	constructor(private http: HttpClient, @Inject(APP_BASE_HREF) private baseHref: string) {}
 
 
 	//######## GET Methods ########
 	getAllBranding(): Observable<Branding[]> {
-		return this.http.get<Branding[]>(this.brandingUrl).pipe(
+		return this.http.get<Branding[]>(this.restUrl).pipe(
 			tap(branding => this.log(`fetched branding list`)),
 			catchError(this.handleError('getAllBranding', []))
 		);
 	}
 
 	getCurrentBranding<Branding>(): Observable<Branding> {
-		const url = `${this.brandingUrl}/current`;
+		const url = `${this.restUrl}/current`;
 		return this.http.get<Branding>(url).pipe(
 			tap(data => this.log(`fetched current branding ` + data)),
 			catchError(this.handleError<Branding>('getCurrentBranding'))
@@ -39,7 +37,7 @@ export class BrandingService {
 	}
 
 	getBranding<Branding>(id: string): Observable<Branding> {
-		const url = `${this.brandingUrl}/${id}`;
+		const url = `${this.restUrl}/${id}`;
 		return this.http.get<Branding>(url).pipe(
 			tap(_ => this.log(`fetched branding id=${id}`)),
 			catchError(this.handleError<Branding>(`getBranding id=${id}`))
@@ -49,7 +47,7 @@ export class BrandingService {
 	//######## DELETE Methods ########
 	deleteBranding(branding: Branding | string): Observable<Branding> {
 		const id = typeof branding === 'string' ? branding : branding.brandingId;
-		const url = `${this.brandingUrl}/${id}`;
+		const url = `${this.restUrl}/${id}`;
 
 		return this.http.delete<Branding>(url, httpOptions).pipe(
 			tap(_ => this.log(`deleted branding id=${id}`)),
@@ -59,7 +57,7 @@ export class BrandingService {
 
 	//######## POST Methods ########
 	addBranding(branding: Branding): Observable<Branding> {
-		return this.http.post<Branding>(this.brandingUrl, branding, httpOptions).pipe(
+		return this.http.post<Branding>(this.restUrl, branding, httpOptions).pipe(
 			tap((branding: Branding) => this.log(`added branding w/ id=${branding.brandingId}`)),
 			catchError(this.handleError<Branding>('addBranding'))
 		);
@@ -67,7 +65,7 @@ export class BrandingService {
 
 	//######## Update (PUT) Methods ########
 	resetBranding(): Observable<any> {
-		const url = `${this.brandingUrl}/current/default`;
+		const url = `${this.restUrl}/current/default`;
 		return this.http.put(url, {}, httpOptions).pipe(
 			tap(_ => this.log(`reset branding`)),
 			catchError(this.handleError<any>('resetBranding'))
@@ -75,7 +73,7 @@ export class BrandingService {
 	}
 
 	updateBranding(branding: Branding): Observable<any> {
-		const url = `${this.brandingUrl}/${branding.brandingId}`;
+		const url = `${this.restUrl}/${branding.brandingId}`;
 		return this.http.put(url, branding, httpOptions).pipe(
 			tap(_ => this.log(`update branding`)),
 			catchError(this.handleError<any>('updateBranding'))
@@ -84,7 +82,7 @@ export class BrandingService {
 
 	activateBranding(branding: Branding | string): Observable<any> {
 		const id = typeof branding === 'string' ? branding : branding.brandingId;
-		const url = `${this.brandingUrl}/${id}/active`;
+		const url = `${this.restUrl}/${id}/active`;
 		return this.http.put(url, {}, httpOptions).pipe(
 			tap(_ => this.log(`activate branding`)),
 			catchError(this.handleError<any>('activateBranding'))

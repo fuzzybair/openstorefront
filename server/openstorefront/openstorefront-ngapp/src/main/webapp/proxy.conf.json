@@ -1,9 +1,17 @@
 {
-	"/openstorefront": {
+	"/api": {
 		"target": "http://localhost:8080",
 		"secure": false,
 		"pathRewrite": {
-			"^/": ""
+			"^/": "/openstorefront/"
+		},
+		"logLevel": "debug"
+	},
+	"/images": {
+		"target": "http://localhost:8080",
+		"secure": false,
+		"pathRewrite": {
+			"^/": "/openstorefront/"
 		},
 		"logLevel": "debug"
 	}

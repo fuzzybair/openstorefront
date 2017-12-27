@@ -39,7 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.PUT;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -71,10 +71,9 @@ public class AuthenticationService extends BaseResource
 	@Context
 	private HttpServletResponse httpResponse;
 
-	private boolean remember;
 	private String gotoPage;
 
-	@PUT
+	@POST
 	@APIDescription("Authenticates user")
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -91,14 +90,10 @@ public class AuthenticationService extends BaseResource
 				DefaultWebSecurityManager webSecurityManager = (DefaultWebSecurityManager) securityManager;
 				for (Realm realm : webSecurityManager.getRealms()) {
 					if (realm instanceof HeaderRealm) {
-						String startPage = startPage();
-						if (startPage.toLowerCase().startsWith("http") == false) {
-							startPage = httpRequest.getContextPath() + startPage;
-						}
 						// Return the token on the response
 						LoginModel result = new LoginModel();
 						result.setToken("1234");
-						result.setUrl(startPage);
+						result.setUrl(startPage());
 						return sendSingleEntityResponse(result);
 					}
 				}
@@ -111,14 +106,10 @@ public class AuthenticationService extends BaseResource
 				UserProfile userProfile = new UserProfile();
 				userProfile.setUsername(username);
 				service.getUserService().handleLogin(userProfile, httpRequest, false);
-				String startPage = startPage();
-				if (startPage.toLowerCase().startsWith("http") == false) {
-					startPage = httpRequest.getContextPath() + startPage;
-				}
 				// Return the token on the response
 				LoginModel result = new LoginModel();
 				result.setToken("1234");
-				result.setUrl(startPage);
+				result.setUrl(startPage());
 				return sendSingleEntityResponse(result);
 			} catch (AuthenticationException uea) {
 				//Keep in mind an attacker can create a DOS hitting accounts...ip logging is here to help trace that scenario.
@@ -138,7 +129,7 @@ public class AuthenticationService extends BaseResource
 		}
 	}
 
-	@PUT
+	@POST
 	@APIDescription("Clears Authentication token")
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/logout")
@@ -185,6 +176,11 @@ public class AuthenticationService extends BaseResource
 			}
 		}
 		startPage = startPage.replace("Login.action", "");
+		if (startPage.toLowerCase().startsWith("http") == false) {
+			
+			//NOTE: KB not sure why we are adding httpRequest.getContextPath()  in login.Action but it breaks angular UI
+			//startPage = httpRequest.getContextPath() + startPage;
+		}
 		return startPage;
 	}
 }
