@@ -5,9 +5,9 @@ import {LandingComponent} from './landing/landing.component';
 import {AdminToolsComponent} from './admin-tools/admin-tools.component';
 import {UserToolsComponent} from './user-tools/user-tools.component';
 import {EvaluationToolsComponent} from './evaluation-tools/evaluation-tools.component';
-import {AdminEntryComponent} from './admin-entry/admin-entry.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
+import {AdminAttributesComponent} from './admin-attributes/admin-attributes.component';
 
 const routes: Routes = [
 	{path: '', redirectTo: 'Landing.action', pathMatch: 'full'},
@@ -19,7 +19,7 @@ const routes: Routes = [
 		children: [
 			{path: '', redirectTo: 'Dashboard', pathMatch: 'full'},
 			{path: 'Dashboard',	component: AdminDashboardComponent},
-			{path: 'Entry',	component: AdminEntryComponent}
+			{path: 'Attributes',	component: AdminAttributesComponent}
 		]
 	},
 	{path: 'UserTool.action', component: UserToolsComponent},
