@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http'
 import {APP_BASE_HREF, PlatformLocation} from "@angular/common";
 import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //ui elements
 import {
@@ -14,7 +15,8 @@ import {
 	MessageModule,
 	TooltipModule,
 	DataTableModule,
-	SharedModule
+	SharedModule,
+	DropdownModule
 } from 'primeng/primeng';
 //####### Storefront items ########
 //Routing
@@ -22,6 +24,10 @@ import {AppRoutingModule} from './app-routing.module';
 //Servcies
 import {BrandingService} from './services/branding.service';
 import {AuthenticationService} from './services/authentication.service';
+import {AttributeService} from './services/attribute.service';
+
+//Guards
+import {LoggedInGuard} from './guards/logged-in.guard';
 //Components
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -59,6 +65,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 	],
 	imports: [
 		BrowserModule,
+		BrowserAnimationsModule,
 		HttpClientModule,
 		FormsModule,
 		AppRoutingModule,
@@ -69,11 +76,14 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		MessageModule,
 		TooltipModule,
 		DataTableModule,
-		SharedModule
+		SharedModule,
+		DropdownModule
 	],
 	providers: [
 		BrandingService,
 		AuthenticationService,
+		AttributeService,
+		LoggedInGuard,
 		HttpClientModule,
 		HttpClient,
 		{

@@ -109,8 +109,7 @@ export class BrandingService {
 		};
 	}
 
-	/** Log a HeroService message with the MessageService */
-	private log(message: string) {
+	private log(message: any) {
 		console.log(message);
 		//this.messageService.add('HeroService: ' + message);
 	}

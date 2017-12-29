@@ -42,6 +42,33 @@
 }
 .sectionContent{
 	flex-grow: 1;
-	font-size: 24px;
 	background-color: #d0d0d0;
+}
+.ui-tooltip {
+    width: 200px;
+}
+.ui-column-title{
+	font-size: 0.75em;
+}
+.flag{
+	text-align: center;
+	color: #64B647;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.no-flag{
+	text-align: center;
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;	
+}
+@media (max-width: 35em)
+{
+	
+.flag{
+	display: inline-block;
+}
+.no-flag{
+	display: inline-block;
+}	
 }

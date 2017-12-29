@@ -31,7 +31,7 @@ export class AuthenticationService {
 				if (user && user.token) {
 					// store user details and jwt token in local storage to keep user logged in between page refreshes
 					localStorage.setItem('currentUser', JSON.stringify(user));
-					user.url = user.url.replace(this.baseHref,'');
+					user.url = user.url.replace(this.baseHref, '');
 				}
 
 				return user;
@@ -42,15 +42,40 @@ export class AuthenticationService {
 	}
 	logout(): Observable<Login> {
 		const url = `${this.restUrl}/logout`;
+		// remove user from local storage to log user out
+		localStorage.removeItem('currentUser');
 		return this.http.post<Login>(url, {}, httpOptions).pipe(
 			map(user => {
-				// remove user from local storage to log user out
-				localStorage.removeItem('currentUser');
 				return user;
 			}),
 			tap(_ => this.log(`logout`)),
 			catchError(this.handleError<any>('logout'))
 		);
+	}
+	isLoggedIn(): Observable<boolean> {
+		const url = `${this.restUrl}/isLoggedIn`;
+		//optimization: check localStorage if not set return false
+		if (!localStorage.getItem('currentUser')) {
+			// user is not logged in so return false
+			this.log("no localStorage");
+			return of(false);
+		}
+		//REST endpoint  SecurityUtil.isLoggedIn(); always returning false
+		return of(true);
+		//		return this.http.get<boolean>(url, httpOptions).pipe(
+		//			map(loggedIn => {
+		//				// remove user from local storage to log user out
+		//				if (!loggedIn) {
+		//					localStorage.removeItem('currentUser');
+		//					this.log("seerver check");
+		//				}
+		//				return loggedIn;
+		//			}),
+		//			catchError(_ => {
+		//				this.handleError<any>('isLoggedIn');
+		//				return of(false);
+		//			})
+		//		);
 	}
 
 	/**

@@ -3,15 +3,15 @@
 	<h2>Log In</h2>
 	<div class="form-control">
 		<span class="ui-float-label">
-			<input id="float-input" type="text" pInputText [(ngModel)]="username" [ngClass]="{'ng-invalid':!!usernameError}" /> 
-				   <label for="float-input">Username</label>
+			<input id="username" type="text" pInputText [(ngModel)]="username" [ngClass]="{'ng-invalid':!!usernameError}" /> 
+				   <label for="username">Username</label>
 		</span>
 		<p-message severity="error" text="{{usernameError}}" *ngIf="usernameError"></p-message>
 	</div>
 	<div class="form-control">
 		<span class="ui-float-label">
-			<input id="float-input" type="text" pInputText [(ngModel)]="password" [ngClass]="{'ng-invalid':!!passwordError}"/> 
-				   <label for="float-input">Password</label>
+			<input id="password" type="password" pInputText [(ngModel)]="password" [ngClass]="{'ng-invalid':!!passwordError}"/> 
+				   <label for="password">Password</label>
 		</span>
 		<p-message severity="error" text="{{passwordError}}" *ngIf="passwordError"></p-message>
 	</div>

@@ -1,33 +1,85 @@
 <div class="title">{{pageTitle}}&nbsp;<i class="fa fa-lg fa-question-circle" pTooltip="{{pageToolTip}}"></i></div>
 <div class="menuBar">
+	<p-dropdown [options]="statuses" [(ngModel)]="selectedStatus" filter="true"></p-dropdown>
 </div>
 <div class="buttonBar">
 	<div class="left">
 		<button type="button" pButton icon="fa fa-refresh" label="Refresh" class="ui-button-secondary"></button>
-		<button type="button" pButton icon="fa fa-plus" label="Add" class="ui-button-secondary"></button>
-		<button type="button" pButton icon="fa fa-edit" label="Edit" class="ui-button-secondary"></button>
-		<button type="button" pButton icon="fa fa-eye" label="View" class="ui-button-secondary"></button>
-		<button type="button" pButton icon="fa fa-check-square-o" label="Aprove" class="ui-button-secondary"></button>
-		<p-menu #dataMenu popup="popup" [model]="dataPages"></p-menu>
-		<button type="button" pButton icon="fa fa-sort-down" label="Action" class="ui-button-secondary" iconPos="right" (click)="dataMenu.toggle($event)"></button>
+		<button type="button" pButton icon="fa fa-plus" label="Add New Type" class="ui-button-secondary"></button>
+		<button type="button" pButton icon="fa fa-edit" label="Edit Attribute" [disabled]="true" class="ui-button-secondary"></button>
+		<button type="button" pButton icon="fa fa-list-alt" label="Manage Codes" [disabled]="true" class="ui-button-secondary"></button>
+		<button type="button" pButton icon="fa fa-list-alt" label="Entry Assignment" class="ui-button-secondary"></button>
+		<p-menu #dataMenu popup="popup" [model]="actionMenuPages"></p-menu>
+		<button type="button" pButton icon="fa fa-gear" label="Action" class="ui-button-secondary" [disabled]="true" (click)="dataMenu.toggle($event)"></button>
 	</div>
 	<div class="right">
 		<button type="button" pButton icon="fa fa-upload" label="Import" class="ui-button-secondary"></button>
 		<button type="button" pButton icon="fa fa-download" label="Export" class="ui-button-secondary"></button>
 	</div>
 </div>
+
 <div class="sectionContent">
-	<p-dataTable [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [responsive]="true">
-		<p-header>List of Cars</p-header>
-		<p-column field="vin" header="Vin"></p-column>
-		<p-column field="year" header="Year"></p-column>
-		<p-column field="brand" header="Brand"></p-column>
-		<p-column field="color" header="Color"></p-column>
+	<p-dataTable [value]="attributeTypes"
+		selectionMode="multiple" 
+		[loading]="loading" 
+		loadingIcon="fa-spinner" 
+		[rows]="10" 
+		[paginator]="true" 
+		[pageLinks]="3" 
+		[rowsPerPageOptions]="[5,10,20]" 
+		[responsive]="true"
+		[resizableColumns]="true" >
+		<p-column selectionMode="multiple" [style]="{'width':'40px'}"></p-column>
+		<p-column field="description" header="Description"></p-column>
+		<p-column field="attributeType" header="Type Code"></p-column>
+		<p-column field="requiredFlg" header="Required">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>
+		<p-column field="visibleFlg" header="Visible">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>		
+		<p-column field="importantFlg" header="Important">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>		
+		<p-column field="architectureFlg" header="Architecture">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>
+		<p-column field="allowMultipleFlg" header="Allow Multiple">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>
+		<p-column field="allowUserGeneratedCodes" header="Allow User Codes">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>
+		<p-column field="hideOnSubmission" header="Hide On Submission">
+			<ng-template let-col let-car="rowData" pTemplate="body">
+				<div *ngIf="car[col.field]" class="flag"><i class="fa fa-check"></i></div>
+				<div *ngIf="!car[col.field]" class="no-flag"><i class="fa fa-close"></i></div>
+			</ng-template>
+		</p-column>
+		<p-column field="defaultAttributeCode" header="Default Code"></p-column>
+		<p-column field="attributeValueType" header="Value type"></p-column>
+		<p-column field="activeStatus" header="Status"></p-column>
+
 		<ng-template pTemplate="paginatorLeft">
 			<button type="button" pButton icon="fa-refresh"></button>
-		</ng-template>
-		<ng-template pTemplate="paginatorRight">
-			<button type="button" pButton icon="fa-cloud-upload"></button>
 		</ng-template>
 	</p-dataTable>
 </div>

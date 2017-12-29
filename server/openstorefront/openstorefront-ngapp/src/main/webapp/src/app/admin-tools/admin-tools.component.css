@@ -40,6 +40,8 @@
 .menuBar{
 	height: 56px;
 	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
     align-items: center;
 }
 .menuBar button{
