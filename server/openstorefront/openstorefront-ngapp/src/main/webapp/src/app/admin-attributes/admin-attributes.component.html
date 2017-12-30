@@ -5,7 +5,7 @@
 <div class="buttonBar">
 	<div class="left">
 		<button type="button" pButton icon="fa fa-refresh" label="Refresh" class="ui-button-secondary"></button>
-		<button type="button" pButton icon="fa fa-plus" label="Add New Type" class="ui-button-secondary"></button>
+		<button type="button" pButton icon="fa fa-plus" label="Add New Type" class="ui-button-secondary" (click)="showDialog('Add')" ></button>		
 		<button type="button" pButton icon="fa fa-edit" label="Edit Attribute" [disabled]="true" class="ui-button-secondary"></button>
 		<button type="button" pButton icon="fa fa-list-alt" label="Manage Codes" [disabled]="true" class="ui-button-secondary"></button>
 		<button type="button" pButton icon="fa fa-list-alt" label="Entry Assignment" class="ui-button-secondary"></button>
@@ -83,3 +83,4 @@
 		</ng-template>
 	</p-dataTable>
 </div>
+<app-add-attribute [name]="Add" [(visible)]="showAddDialog" (close)="closeDialog($event)"></app-add-attribute>

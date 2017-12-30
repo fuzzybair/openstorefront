@@ -1,0 +1,56 @@
+<p-dialog header="Add Attribute" [(visible)]="visible" modal="modal" width="75%">
+	<form (ngSubmit)="submit()">
+		<div class="form-field">
+			<label for="description">Label<span class="field-required"></span></label>
+			<input id="description" type="text" pInputText required [(value)]="data.description" /> 
+		</div>
+		<div class="form-field">
+			<label for="attributeType">Type Code<span class="field-required"></span></label>
+			<input id="attributeType" type="text" pInputText required [(value)]="data.attributeType" /> 
+		</div>
+		<div class="form-field">
+			<label for="defaultAttributeCode">Default Code</label>
+			<input id="defaultAttributeCode" type="text" pInputText [(value)]="data.defaultAttributeCode" /> 
+		</div>
+		<div class="form-field">
+			<label for="detailedDescription">Detailed Description</label>
+			<p-editor name="detailedDescription" id="detailedDescription" [(ngModel)]="data.detailedDescription" [style]="{'height':'250px'}"></p-editor>
+		</div>
+		<div class="form-field">
+			<label for="attributeValueType">Code Value Type<span class="field-required"></span></label>
+			<p-dropdown name="attributeValueType" id="attributeValueType" [options]="attributeValueTypes" [(ngModel)]="data.attributeValueType" [style]="{'width':'100%'}"></p-dropdown>
+		</div>
+		<div class="form-field">
+			<label for="allEntryTypes">Associated Entry Types:</label>
+			<p-checkbox id="allEntryTypes" name="allEntryTypes" [(ngModel)]="allEntryTypes" binary="true" label="Allow For All Entry Types"></p-checkbox>
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+			<label for="flags">Flags:<span class="field-required"></span></label>
+			<p-checkbox id="requiredFlg" name="requiredFlg" [(ngModel)]="data.requiredFlg" binary="true" label="Required"></p-checkbox>
+			<p-checkbox id="visibleFlg" name="visibleFlg" [(ngModel)]="data.visibleFlg" binary="true" label="Visible"></p-checkbox>
+			<p-checkbox id="importantFlg" name="importantFlg" [(ngModel)]="data.importantFlg" binary="true" label="Important"></p-checkbox>
+			<p-checkbox id="architectureFlg" name="architectureFlg" [(ngModel)]="data.architectureFlg" binary="true" label="Architecture"></p-checkbox>
+			<p-checkbox id="allowMultipleFlg" name="allowMultipleFlg" [(ngModel)]="data.allowMultipleFlg" binary="true" label="Allow Multiple"></p-checkbox>
+			<p-checkbox id="allowUserGeneratedCodes" name="allEntryTypes" [(ngModel)]="data.allowUserGeneratedCodes" binary="true" label="Allow User-Created Codes"></p-checkbox>
+			<p-checkbox id="hideOnSubmission" name="allEntryTypes" [(ngModel)]="data.hideOnSubmission" binary="true" label="Hide on Submission"></p-checkbox>
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+		</div>
+		<div class="form-field">
+		</div>
+	</form>
+	<p-footer>
+		<button pbutton type="submit" pButton icon="fa-save" (click)="save()" label="Save"></button>
+		<button pbutton type="reset" pButton icon="fa-close" (click)="cancel()" label="Cancel"></button>
+	</p-footer>
+</p-dialog>

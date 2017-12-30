@@ -32,4 +32,3 @@ export class AttributeType extends StandardEntity{
 	public defaultAttributeCode: string;
 	public attributeValueType: string;
 }
-

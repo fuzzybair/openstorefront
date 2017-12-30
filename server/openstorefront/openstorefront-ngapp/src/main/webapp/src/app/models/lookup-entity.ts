@@ -13,14 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export class StandardEntity {
-	public securityMarkingType: string;
-	public dataSensitivity: string;
-	public activeStatus: string;
-	public createUser: string;
-	public createDts: Date;
-	public updateUser: string;
-	public updateDts: Date;
-	public adminModified: boolean;
+export class LookupEntity {
+	public code: string;
+	public description: string;
+	public detailedDescription: string;
+	public sortOrder: number;
+	public highlightStyle: string;
 }
-

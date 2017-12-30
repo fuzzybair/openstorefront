@@ -62,13 +62,19 @@
     background-color: #f2dede;
     border-color: #ebccd1;	
 }
+
+.ui-dialog .ui-dialog-titlebar{
+	background-color: #441e60; /* ${branding.primaryColor}; */
+	color: #FFFFFF; /* ${branding.primaryTextColor}; */	
+}
+
 @media (max-width: 35em)
 {
-	
-.flag{
-	display: inline-block;
-}
-.no-flag{
-	display: inline-block;
-}	
+
+	.flag{
+		display: inline-block;
+	}
+	.no-flag{
+		display: inline-block;
+	}	
 }

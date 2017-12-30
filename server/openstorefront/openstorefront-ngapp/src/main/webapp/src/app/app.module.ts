@@ -9,14 +9,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //ui elements
 import {
 	InputTextModule,
-	PasswordModule,
 	ButtonModule,
 	MenuModule,
 	MessageModule,
 	TooltipModule,
 	DataTableModule,
 	SharedModule,
-	DropdownModule
+	DropdownModule,
+	DialogModule,
+	EditorModule,
+	CheckboxModule
 } from 'primeng/primeng';
 //####### Storefront items ########
 //Routing
@@ -25,7 +27,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrandingService} from './services/branding.service';
 import {AuthenticationService} from './services/authentication.service';
 import {AttributeService} from './services/attribute.service';
-
+import {LookupTypeService} from './services/lookup-type.service'
 //Guards
 import {LoggedInGuard} from './guards/logged-in.guard';
 //Components
@@ -42,6 +44,7 @@ import {UserMenuComponent} from './user-menu/user-menu.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 import {AdminAttributesComponent} from './admin-attributes/admin-attributes.component';
+import {AddAttributeComponent} from './add-attribute/add-attribute.component';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
 	return platformLocation.getBaseHrefFromDOM();
@@ -61,7 +64,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		UserMenuComponent,
 		PageNotFoundComponent,
 		AdminDashboardComponent,
-		AdminAttributesComponent
+		AdminAttributesComponent,
+		AddAttributeComponent
 	],
 	imports: [
 		BrowserModule,
@@ -70,19 +74,22 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		FormsModule,
 		AppRoutingModule,
 		InputTextModule,
-		PasswordModule,
 		ButtonModule,
 		MenuModule,
 		MessageModule,
 		TooltipModule,
 		DataTableModule,
 		SharedModule,
-		DropdownModule
+		DropdownModule,
+		DialogModule,
+		EditorModule,
+		CheckboxModule
 	],
 	providers: [
 		BrandingService,
 		AuthenticationService,
 		AttributeService,
+		LookupTypeService,
 		LoggedInGuard,
 		HttpClientModule,
 		HttpClient,
