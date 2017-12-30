@@ -7,9 +7,10 @@ import {of} from 'rxjs/observable/of';
 import {catchError, map, tap} from 'rxjs/operators';
 
 import {AttributeType} from '../models/attribute-type';
+import {ComponentTypeRestriction} from '../models/component-type-restriction';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+	headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable()
@@ -26,17 +27,36 @@ export class AttributeService {
 	public getAttributeTypes(attributeTypeDescription: string, attributeCodeLabel: string): Observable<AttributeType[]> {
 		const url = `${this.restUrl}`;
 		let params = new HttpParams();
-		if(!!attributeTypeDescription)
-		{
-			params.append("attributeTypeDescription",attributeTypeDescription);
+		if (!!attributeTypeDescription) {
+			params.append("attributeTypeDescription", attributeTypeDescription);
 		}
-		if(!!attributeCodeLabel)
-		{
-			params.append("attributeCodeLabel",attributeCodeLabel);
+		if (!!attributeCodeLabel) {
+			params.append("attributeCodeLabel", attributeCodeLabel);
 		}
 		return this.http.get<AttributeType[]>(url, {params}).pipe(
 			tap(attributes => this.log(`fetched AttributeType list records: ${attributes.length}`)),
 			catchError(this.handleError('getAttributeTypes', []))
+		);
+	}
+
+	//POST
+	//RequireSecurity(SecurityPermission.ADMIN_ATTRIBUTE_MANAGEMENT)
+	//APIDescription("Adds a new attribute type")
+	//Consumes({MediaType.APPLICATION_JSON})
+	//Path("/attributetypes")
+	public postAttributeType(attributeType: AttributeType, componentTypeRestrictions: ComponentTypeRestriction[], associatedComponentTypes: ComponentTypeRestriction[]): Observable<AttributeType> {
+
+		const url = `${this.restUrl}/attributetypes`;
+		return this.http.post<AttributeType>(url, {
+			attributeType: attributeType,
+			componentTypeRestrictions: componentTypeRestrictions,
+			associatedComponentTypes: associatedComponentTypes
+		}, httpOptions).pipe(
+			map(attType => {
+				return attType;
+			}),
+			tap(_ => this.log(`postAttributeType`)),
+			catchError(this.handleError<any>('postAttributeType'))
 		);
 	}
 

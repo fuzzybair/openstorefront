@@ -1,3 +1,8 @@
-<app-landng-page-header></app-landng-page-header>
-<div class="content">Landing Page content coming soon</div>
-<app-landng-page-footer></app-landng-page-footer>
+<div *ngIf="brandingObs$ | async as branding; else loading" class="pageContent">
+	<app-landng-page-header [branding]="branding"></app-landng-page-header>
+	<div class="content">Landing Page content coming soon</div>
+	<app-landng-page-footer></app-landng-page-footer>
+</div>
+<ng-template #loading>
+	Loading ...
+</ng-template>

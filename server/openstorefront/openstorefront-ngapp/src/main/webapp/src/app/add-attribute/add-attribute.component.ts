@@ -10,6 +10,8 @@ import {AttributeService} from '../services/attribute.service';
 
 import {AttributeType} from '../models/attribute-type';
 import {LookupEntity} from '../models/lookup-entity';
+import {ComponentTypeRestriction} from '../models/component-type-restriction';
+
 @Component({
 	selector: 'app-add-attribute',
 	templateUrl: './add-attribute.component.html',
@@ -25,40 +27,45 @@ export class AddAttributeComponent implements OnInit {
 	}
 
 	get name(): string {return this._name;}
-	
-	
+
+
 	public data: AttributeType = new AttributeType();
+	public componentTypeRestrictions: ComponentTypeRestriction[] = [];
+	public associatedComponentTypes: ComponentTypeRestriction[] = [];
+
+
 	public attributeValueTypes: SelectItem[] = [];
-	public allEntryTypes : boolean;
+	public allEntryTypes: boolean;
 
 	private _name: string;
 
-	@Output() close: EventEmitter<string> = new EventEmitter();
+	@Output() close: EventEmitter<AttributeType> = new EventEmitter();
 	constructor(private lookupService: LookupTypeService, private attribueService: AttributeService) {}
 
 	ngOnInit() {
 		this.lookupService.getEntityValues("AttributeValueType").subscribe(
 			data => {
-				for(let item of data)
-				{
-					this.attributeValueTypes.push({label: item.description, value: item.code},);
+				for (let item of data) {
+					this.attributeValueTypes.push({label: item.description, value: item.code}, );
 				}
 			});
 	}
 	save() {
 		this.log("save");
-		this.close.emit(name);
+		this.attribueService.postAttributeType(this.data, this.componentTypeRestrictions, this.associatedComponentTypes).subscribe(
+			result => {
+				this.close.emit(result);
+			},
+			error => {
+				this.log(error);
+			});
 	}
 	cancel() {
 		this.log("cancel");
-		this.close.emit(name);
+		this.close.emit(undefined);
 	}
-	submit() {
-		this.log("submit");
-		this.close.emit(name);
-	}
+
 	private log(message: any) {
 		console.log(message);
-		//this.messageService.add('HeroService: ' + message);
 	}
 }

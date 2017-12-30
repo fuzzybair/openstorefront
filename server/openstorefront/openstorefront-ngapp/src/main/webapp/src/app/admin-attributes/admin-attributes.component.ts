@@ -31,7 +31,7 @@ export class AdminAttributesComponent implements OnInit {
 			this.attributeTypes = data;
 		});
 	}
-	showDialog(name: string):void {
+	showDialog(name: string): void {
 		switch (name.toLowerCase()) {
 			case "add":
 				{
@@ -44,17 +44,10 @@ export class AdminAttributesComponent implements OnInit {
 				}
 		}
 	}
-	closeDialog(name: string):void {
-		switch (name.toLowerCase()) {
-			case "add":
-				{
-					this.showAddDialog = false;
-					break;
-				}
-			default:
-				{
-					this.showAddDialog = false;
-				}
+	closeAddDialog(result: AttributeType): void {
+		if (result !== undefined) {
+			this.attributeTypes.push(result);
 		}
+		this.showAddDialog = false;
 	}
 }

@@ -7,8 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-	public pageTitle: string = "Manage Entries";
-	public pageToolTip: string = "This tool allows for manipulating all data related to an entry.";
+	public pageTitle: string = "Dashboard";
+	public pageToolTip: string = "Displays widgets and allows for quick mashup of data.";
 	constructor() {}
 
 	ngOnInit() {

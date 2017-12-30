@@ -1,5 +1,5 @@
 <p-dialog header="Add Attribute" [(visible)]="visible" modal="modal" width="75%">
-	<form (ngSubmit)="submit()">
+	<form novalidate>
 		<div class="form-field">
 			<label for="description">Label<span class="field-required"></span></label>
 			<input id="description" type="text" pInputText required [(value)]="data.description" /> 
@@ -35,16 +35,6 @@
 			<p-checkbox id="allowMultipleFlg" name="allowMultipleFlg" [(ngModel)]="data.allowMultipleFlg" binary="true" label="Allow Multiple"></p-checkbox>
 			<p-checkbox id="allowUserGeneratedCodes" name="allEntryTypes" [(ngModel)]="data.allowUserGeneratedCodes" binary="true" label="Allow User-Created Codes"></p-checkbox>
 			<p-checkbox id="hideOnSubmission" name="allEntryTypes" [(ngModel)]="data.hideOnSubmission" binary="true" label="Hide on Submission"></p-checkbox>
-		</div>
-		<div class="form-field">
-		</div>
-		<div class="form-field">
-		</div>
-		<div class="form-field">
-		</div>
-		<div class="form-field">
-		</div>
-		<div class="form-field">
 		</div>
 		<div class="form-field">
 		</div>
