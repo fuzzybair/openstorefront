@@ -37,6 +37,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
 		<link rel="icon" href="${pageContext.request.contextPath}/appicon.png" type="image/x-icon">
+		<link href="//cdn.quilljs.com/1.3.0/quill.core.css" rel="stylesheet">
+		<link href="//cdn.quilljs.com/1.3.0/quill.snow.css" rel="stylesheet">
+		<!-- need to get this working from npm -->
+		<script src="//cdn.quilljs.com/1.3.4/quill.min.js"></script>
 		<title>${branding.getApplicationName()}</title>
 		<base href="${pageContext.request.contextPath}/">
 	</head>
