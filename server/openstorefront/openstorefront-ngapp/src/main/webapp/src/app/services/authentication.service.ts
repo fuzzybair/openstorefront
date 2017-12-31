@@ -9,7 +9,12 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {Login} from '../models/login';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+	headers: new HttpHeaders()
+		.set("Content-Type", "application/x-www-form-urlencoded")
+		.set("Access-Control-Allow-Credentials", "true")
+		.set("Access-Control-Allow-Origin", "*")
+		.set("Cache-Control", "no-cache") // due to IE browser caches API get requests)
+		.set("credentials","include")
 };
 /*
  * this is just basic authentication for Proof of Concept additional safegards may need to be taken see
@@ -61,21 +66,21 @@ export class AuthenticationService {
 			return of(false);
 		}
 		//REST endpoint  SecurityUtil.isLoggedIn(); always returning false
-		return of(true);
-		//		return this.http.get<boolean>(url, httpOptions).pipe(
-		//			map(loggedIn => {
-		//				// remove user from local storage to log user out
-		//				if (!loggedIn) {
-		//					localStorage.removeItem('currentUser');
-		//					this.log("seerver check");
-		//				}
-		//				return loggedIn;
-		//			}),
-		//			catchError(_ => {
-		//				this.handleError<any>('isLoggedIn');
-		//				return of(false);
-		//			})
-		//		);
+		//		return of(true);
+		return this.http.get<boolean>(url, httpOptions).pipe(
+			map(loggedIn => {
+				// remove user from local storage to log user out
+				if (!loggedIn) {
+					localStorage.removeItem('currentUser');
+					this.log("seerver check");
+				}
+				return loggedIn;
+			}),
+			catchError(_ => {
+				this.handleError<any>('isLoggedIn');
+				return of(false);
+			})
+		);
 	}
 
 	/**

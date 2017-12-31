@@ -9,8 +9,13 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {LookupEntity} from '../models/lookup-entity';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+	headers: new HttpHeaders()
+		.set("Content-Type", "application/json")
+		.set("Access-Control-Allow-Credentials", "true")
+		.set("Access-Control-Allow-Origin", "*")
+		.set("Cache-Control", "no-cache") // due to IE browser caches API get requests)
 };
+
 @Injectable()
 export class LookupTypeService {
 	private restUrl = this.baseHref + 'api/v1/resource/lookuptypes';  // URL to web api
@@ -26,15 +31,15 @@ export class LookupTypeService {
 		const url = `${this.restUrl}/${entity}`;
 		//FilterQueryParams
 		let params = new HttpParams();
-		
-//		if(!!attributeTypeDescription)
-//		{
-//			params.append("attributeTypeDescription",attributeTypeDescription);
-//		}
-//		if(!!attributeCodeLabel)
-//		{
-//			params.append("attributeCodeLabel",attributeCodeLabel);
-//		}
+
+		//		if(!!attributeTypeDescription)
+		//		{
+		//			params.append("attributeTypeDescription",attributeTypeDescription);
+		//		}
+		//		if(!!attributeCodeLabel)
+		//		{
+		//			params.append("attributeCodeLabel",attributeCodeLabel);
+		//		}
 		return this.http.get<LookupEntity[]>(url, {params}).pipe(
 			tap(attributes => this.log(`fetched LookupEntity list records: ${attributes.length}`)),
 			catchError(this.handleError('LookupEntityList', []))

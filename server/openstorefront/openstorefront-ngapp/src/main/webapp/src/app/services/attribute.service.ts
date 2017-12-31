@@ -10,9 +10,12 @@ import {AttributeType} from '../models/attribute-type';
 import {ComponentTypeRestriction} from '../models/component-type-restriction';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+	headers: new HttpHeaders()
+		.set("Content-Type", "application/json")
+		.set("Access-Control-Allow-Credentials", "true")
+		.set("Access-Control-Allow-Origin", "*")
+		.set("Cache-Control", "no-cache") // due to IE browser caches API get requests)
 };
-
 @Injectable()
 export class AttributeService {
 	private restUrl = this.baseHref + 'api/v1/resource/attributes';  // URL to web api
@@ -57,7 +60,7 @@ export class AttributeService {
 			}),
 			tap(_ => this.log(`postAttributeType`)),
 			catchError(this.handleError<any>('postAttributeType'))
-		);
+			);
 	}
 
     /**

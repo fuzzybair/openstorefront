@@ -9,7 +9,11 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {Branding} from '../models/Branding';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+	headers: new HttpHeaders()
+		.set("Content-Type", "application/json")
+		.set("Access-Control-Allow-Credentials", "true")
+		.set("Access-Control-Allow-Origin", "*")
+		.set("Cache-Control", "no-cache") // due to IE browser caches API get requests)
 };
 
 @Injectable()
