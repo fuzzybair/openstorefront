@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 	private returnUrl: string;
 	public usernameError: string;
 	public passwordError: string;
+	public gotoPageId: string;
 	constructor(public authenticationService: AuthenticationService,
 		private route: ActivatedRoute,
 		private router: Router) {}

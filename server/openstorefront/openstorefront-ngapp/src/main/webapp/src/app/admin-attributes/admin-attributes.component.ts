@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SelectItem} from 'primeng/primeng';
+import {SelectItem, MenuItem} from 'primeng/primeng';
 
 import {AttributeService} from '../services/attribute.service';
 import {AttributeType} from '../models/attribute-type';
@@ -17,6 +17,7 @@ export class AdminAttributesComponent implements OnInit {
 	public selectedStatus: string = "A";
 	public attributeTypes: AttributeType[];
 	public showAddDialog: boolean = false;
+	public actionMenuPages: MenuItem[];
 	constructor(private attribueService: AttributeService) {}
 
 	ngOnInit() {
