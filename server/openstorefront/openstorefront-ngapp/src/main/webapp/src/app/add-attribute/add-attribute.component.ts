@@ -11,6 +11,7 @@ import {AttributeService} from '../services/attribute.service';
 import {AttributeType} from '../models/attribute-type';
 import {LookupEntity} from '../models/lookup-entity';
 import {ComponentTypeRestriction} from '../models/component-type-restriction';
+import {StandardEntity} from '../models/standard-entity';
 
 @Component({
 	selector: 'app-add-attribute',
@@ -52,6 +53,7 @@ export class AddAttributeComponent implements OnInit {
 	}
 	save() {
 		this.log("save");
+		debugger;
 		this.attribueService.postAttributeType(this.data, this.componentTypeRestrictions, this.associatedComponentTypes).subscribe(
 			result => {
 				this.close.emit(result);

@@ -14,17 +14,17 @@ export class UserMenuComponent implements OnInit {
 
 	ngOnInit() {
 		this.pages = [
-			{label: 'Home', icon: 'fa-home', routerLink: ['/Landing.action']},
-			{label: 'Admin Tools', icon: 'fa-gear', routerLink: ['/AdminTool.action']},
-			{label: 'User Tools', icon: 'fa-user', routerLink: ['/UserTool.action']},
-			{label: 'Evaluation Tools', icon: 'fa-th-list', routerLink: ['/EvaluationTool.action']},
+			{label: 'Home', icon: 'fa-home', routerLink: ['/Landing']},
+			{label: 'Admin Tools', icon: 'fa-gear', routerLink: ['/AdminTool']},
+			{label: 'User Tools', icon: 'fa-user', routerLink: ['/UserTool']},
+			{label: 'Evaluation Tools', icon: 'fa-th-list', routerLink: ['/EvaluationTool']},
 			{separator: true},
 			{label: 'Help', icon: 'fa-question-circle'},
 			{label: 'Tutorials', icon: 'fa-tv'},
-			{label: 'FAQ', icon: 'fa-info-circle'},
+			{label: 'FAQ', icon: 'fa-info-circle', routerLink: ['/FAQ']},
 			{label: 'Contact Us', icon: 'fa-commenting'},
 			{separator: true},
-			{label: 'Logout', icon: 'fa-sign-out', routerLink: ['/Login.action']}
+			{label: 'Logout', icon: 'fa-sign-out', routerLink: ['/Login']}
 		];
 	}
 

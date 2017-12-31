@@ -19,16 +19,9 @@
 </div>
 
 <div class="sectionContent">
-	<p-dataTable [value]="attributeTypes"
-		selectionMode="multiple" 
-		[loading]="loading" 
-		loadingIcon="fa-spinner" 
-		[rows]="10" 
-		[paginator]="true" 
-		[pageLinks]="3" 
-		[rowsPerPageOptions]="[5,10,20]" 
-		[responsive]="true"
-		[resizableColumns]="true" >
+	<p-dataTable [value]="attributeTypes" selectionMode="multiple" [loading]="loading" 
+		loadingIcon="fa-spinner" [rows]="10" [paginator]="true" [pageLinks]="3" 
+		[rowsPerPageOptions]="[5,10,20]" [responsive]="true" [resizableColumns]="true" >
 		<p-column selectionMode="multiple" [style]="{'width':'40px'}"></p-column>
 		<p-column field="description" header="Description"></p-column>
 		<p-column field="attributeType" header="Type Code"></p-column>
@@ -84,7 +77,3 @@
 	</p-dataTable>
 </div>
 <app-add-attribute name="Add" [(visible)]="showAddDialog" (close)="closeAddDialog($event)"></app-add-attribute>
-
-<ng-template #loading>
-	Loading ...
-</ng-template>

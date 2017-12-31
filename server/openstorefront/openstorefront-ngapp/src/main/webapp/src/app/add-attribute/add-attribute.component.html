@@ -2,15 +2,15 @@
 	<form novalidate>
 		<div class="form-field">
 			<label for="description">Label<span class="field-required"></span></label>
-			<input id="description" type="text" pInputText required [(value)]="data.description" /> 
+			<input name="description" id="description" type="text" pInputText required [(ngModel)]="data.description" /> 
 		</div>
 		<div class="form-field">
 			<label for="attributeType">Type Code<span class="field-required"></span></label>
-			<input id="attributeType" type="text" pInputText required [(value)]="data.attributeType" /> 
+			<input name="attributeType" id="attributeType" type="text" pInputText required [(ngModel)]="data.attributeType" /> 
 		</div>
 		<div class="form-field">
 			<label for="defaultAttributeCode">Default Code</label>
-			<input id="defaultAttributeCode" type="text" pInputText [(value)]="data.defaultAttributeCode" /> 
+			<input name="defaultAttributeCode" id="defaultAttributeCode" type="text" pInputText [(ngModel)]="data.defaultAttributeCode" /> 
 		</div>
 		<div class="form-field">
 			<label for="detailedDescription">Detailed Description</label>

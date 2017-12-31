@@ -16,7 +16,7 @@ export class LoggedInGuard implements CanActivate {
 		this.log("checking login for " + state.url);
 		return this.authService.isLoggedIn().map(authState => {
 			if (!authState) {
-				this.router.navigate(['Login.action'], {queryParams: {returnUrl: state.url}});
+				this.router.navigate(['Login'], {queryParams: {returnUrl: state.url}});
 			}
 			console.log('activate?', !!authState);
 			return !!authState;

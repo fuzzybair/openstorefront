@@ -17,8 +17,8 @@ import {ComponentTypeRestriction} from './component-type-restriction';
 import {StandardEntity} from './standard-entity';
 
 export class AttributeType extends StandardEntity{
-	public attributeType: string;
-	public description: string;
+	public attributeType: string = "new Anbular";
+	public description: string = "NgAtt";
 	public detailedDescription: string;
 	public visibleFlg: boolean;
 	public requiredFlg: boolean;

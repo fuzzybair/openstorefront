@@ -33,7 +33,7 @@ export class AdminToolsComponent implements OnInit {
 	}
 	private setMenu():void{
 		this.dataPages = [
-			{label: 'Attributes', routerLink: ['/AdminTool.action/Attributes']},
+			{label: 'Attributes', routerLink: ['/AdminTool/Attributes']},
 			{label: 'TBD'}
 		];
 		this.evaluationPages = [

@@ -45,7 +45,7 @@ export class AttributeService {
 	//Consumes({MediaType.APPLICATION_JSON})
 	//Path("/attributetypes")
 	public postAttributeType(attributeType: AttributeType, componentTypeRestrictions: ComponentTypeRestriction[], associatedComponentTypes: ComponentTypeRestriction[]): Observable<AttributeType> {
-
+		debugger;
 		const url = `${this.restUrl}/attributetypes`;
 		return this.http.post<AttributeType>(url, {
 			attributeType: attributeType,

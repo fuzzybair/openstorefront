@@ -18,6 +18,7 @@ export class AdminAttributesComponent implements OnInit {
 	public attributeTypes: AttributeType[];
 	public showAddDialog: boolean = false;
 	public actionMenuPages: MenuItem[];
+	public loading: boolean = true;
 	constructor(private attribueService: AttributeService) {}
 
 	ngOnInit() {
@@ -30,6 +31,7 @@ export class AdminAttributesComponent implements OnInit {
 	getAttributeTypes(): void {
 		this.attribueService.getAttributeTypes(undefined, undefined).subscribe(data => {
 			this.attributeTypes = data;
+			this.loading = false;
 		});
 	}
 	showDialog(name: string): void {

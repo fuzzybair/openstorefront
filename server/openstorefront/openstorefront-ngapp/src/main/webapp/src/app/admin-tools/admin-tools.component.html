@@ -11,7 +11,7 @@
 	</div>
 </div>
 <div class="menuBar">
-	<button type="button" pButton icon="fa fa-home" label="Dashboard" class="ui-button-secondary" [routerLink]="['/AdminTool.action']"></button>
+	<button type="button" pButton icon="fa fa-home" label="Dashboard" class="ui-button-secondary" [routerLink]="['/AdminTool']"></button>
 	<p-menu #dataMenu popup="popup" [model]="dataPages"></p-menu>
 	<button type="button" pButton icon="fa fa-database" label="Data Management" class="ui-button-secondary" (click)="dataMenu.toggle($event)"></button>
 	<p-menu #evaluationMenu popup="popup" [model]="evaluationPages"></p-menu>

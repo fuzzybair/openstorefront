@@ -11,26 +11,33 @@ import {AdminAttributesComponent} from './admin-attributes/admin-attributes.comp
 import {LoggedInGuard} from './guards/logged-in.guard';
 
 const routes: Routes = [
-	{path: '', redirectTo: 'Landing.action', pathMatch: 'full'},
-	{path: 'Login.action', component: HomeComponent},
-	{path: 'Landing.action', component: LandingComponent, canActivate: [LoggedInGuard]},
+	//Old url mappings to new
+	{path: 'Login.action', redirectTo: '/Login' },
+	{path: 'Landing.action', redirectTo: '/Landing' },
+	{path: 'AdminTool.action', redirectTo: '/AdminTool' },
+	{path: 'UserTool.action', redirectTo: '/UserTool' },
+	{path: 'EvaluationTool.action', redirectTo: '/EvaluationTool' },
+	//Routes
+	{path: '', redirectTo: '/Landing', pathMatch: 'full'},
+	{path: 'Login', component: HomeComponent},
+	{path: 'Landing', component: LandingComponent, canActivate: [LoggedInGuard]},
 	{
-		path: 'AdminTool.action',
+		path: 'AdminTool',
 		component: AdminToolsComponent,
 		canActivate: [LoggedInGuard],
 		children: [
-			{path: '', redirectTo: 'Dashboard', pathMatch: 'full'},
+			{path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
 			{path: 'Dashboard',	component: AdminDashboardComponent},
 			{path: 'Attributes',	component: AdminAttributesComponent}
 		]
 	},
-	{path: 'UserTool.action', component: UserToolsComponent, canActivate: [LoggedInGuard]},
-	{path: 'EvaluationTool.action', component: EvaluationToolsComponent, canActivate: [LoggedInGuard]},
-	{path: '**', component: PageNotFoundComponent}
+	{path: 'UserTool', component: UserToolsComponent, canActivate: [LoggedInGuard]},
+	{path: 'EvaluationTool', component: EvaluationToolsComponent, canActivate: [LoggedInGuard]},
+//	{path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, { enableTracing: true })],
 	exports: [RouterModule]
 })
 
