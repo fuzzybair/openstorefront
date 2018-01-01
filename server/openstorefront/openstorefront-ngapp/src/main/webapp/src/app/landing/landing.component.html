@@ -1,8 +1,16 @@
 <div *ngIf="brandingObs$ | async as branding; else loading" class="pageContent">
 	<app-landng-page-header [branding]="branding"></app-landng-page-header>
-	<div class="content">Landing Page content coming soon</div>
+	<div class="content">
+		<div *ngIf="getImages() | async as data; else dataLoading">
+			<!--<p-galleria [images]="data" panelWidth="500" panelHeight="313" [showCaption]="true"></p-galleria>-->
+			<!--<p-chart type="doughnut" [data]="data"></p-chart>-->
+		</div>
+	</div>
 	<app-landng-page-footer></app-landng-page-footer>
 </div>
 <ng-template #loading>
 	Loading ...
+</ng-template>
+<ng-template #dataLoading>
+	Data Loading ...
 </ng-template>

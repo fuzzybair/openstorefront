@@ -36,7 +36,10 @@ export class LoginComponent implements OnInit {
 		});
 	}
 
-	public login(value: string): void {
+	public login(): void {
+		if (this.loginform.invalid) {
+			return;
+		}
 		this.loginError = false;
 		this.authenticationService.login(this.username, this.password).subscribe(
 			data => {
