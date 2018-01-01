@@ -1,22 +1,31 @@
-<div>
-	<input type="hidden" id="{{gotoPageId}}" name="gotoPage" />	
+<form novalidate [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
+	  <input type="hidden" id="{{gotoPageId}}" name="gotoPage" />	
 	<h2>Log In</h2>
-	<div class="form-control">
-		<span class="ui-float-label">
-			<input id="username" type="text" pInputText [(ngModel)]="username" [ngClass]="{'ng-invalid':!!usernameError}" /> 
+	<div class="form-control" [ngClass]="{
+		 'ng-invalid': loginform.controls['username'].invalid && loginform.controls['username'].dirty,
+		 'ng-valid': loginform.controls['username'].valid && loginform.controls['username'].dirty
+		 }">
+		 <span class="ui-float-label">
+			<input formControlName="username" id="username" type="text" pInputText [(ngModel)]="username" /> 
 				   <label for="username">Username</label>
 		</span>
-		<p-message severity="error" text="{{usernameError}}" *ngIf="usernameError"></p-message>
+		<p-message severity="error" text="Field is required or Format not accepted." *ngIf="loginform.controls['username'].dirty && loginform.controls['username'].invalid "></p-message>
 	</div>
-	<div class="form-control">
-		<span class="ui-float-label">
-			<input id="password" type="password" pInputText [(ngModel)]="password" [ngClass]="{'ng-invalid':!!passwordError}"/> 
+	<div class="form-control" [ngClass]="{
+		 'ng-invalid': loginform.controls['password'].invalid && loginform.controls['password'].dirty,
+		 'ng-valid': loginform.controls['password'].valid && loginform.controls['password'].dirty
+		 }">
+		 <span class="ui-float-label">
+			<input formControlName="password" id="password" type="password" pInputText [(ngModel)]="password" /> 
 				   <label for="password">Password</label>
 		</span>
-		<p-message severity="error" text="{{passwordError}}" *ngIf="passwordError"></p-message>
+		<p-message severity="error" text="Field is required or Format not accepted." *ngIf="loginform.controls['password'].dirty && loginform.controls['password'].invalid "></p-message>
 	</div>
-	<button pButton class="ui-button" (click)="login()" label="Log in"></button>
+	<div class="form-control">
+		<button pButton type="submit" class="ui-button" label="Log in"></button>
+		<p-message severity="error" text="Unable to login. Check username and password." *ngIf="loginError"></p-message>
+	</div>
 	<div id="forgot-password-links">
 		<a href="resetPassword.jsp">Forgot Password</a> | <a href="forgotUser.jsp">Forgot Username</a>
 	</div>
-</div>
+</form>

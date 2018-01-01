@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../services/authentication.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
 
 import {Message} from 'primeng/components/common/api';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
 	selector: 'app-login',
@@ -11,15 +12,17 @@ import {Message} from 'primeng/components/common/api';
 })
 export class LoginComponent implements OnInit {
 
-	public username: string = "admin";
-	public password: string = "Secret1@";
+	public username: string;
+	public password: string;
 	private returnUrl: string;
-	public usernameError: string;
-	public passwordError: string;
+	public loginError: boolean;
 	public gotoPageId: string;
+
+	public loginform: FormGroup;
 	constructor(public authenticationService: AuthenticationService,
 		private route: ActivatedRoute,
-		private router: Router) {}
+		private router: Router,
+		private formBuilder: FormBuilder) {}
 
 	ngOnInit() {
 		// reset login status
@@ -27,42 +30,35 @@ export class LoginComponent implements OnInit {
 
 		// get return url from route parameters or default to '/'
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+		this.loginform = this.formBuilder.group({
+			'username': ['', Validators.required],
+			'password': ['', Validators.required]
+		});
 	}
 
-	public login(): void {
-		this.usernameError = "";
-		this.passwordError = "";
-		let requiredMessage: string = "Field is required or Format not accepted.";
-		let invalidMessage: string = "Unable to login. Check username and password.";
-		if (!this.username) {
-			this.usernameError = requiredMessage;
-		}
-		if (!this.password) {
-			this.passwordError = requiredMessage;
-		}
-		if (!this.usernameError && !this.passwordError) {
-			this.authenticationService.login(this.username, this.password).subscribe(
-				data => {
-					if (data) {
-						if (this.returnUrl === '') {
-							let newUrlString: string = (data.url as string).replace(/\/$/, '');
-							this.log(newUrlString);
-							let newUrl: string[] = newUrlString.split("/");
-							this.log(newUrl);
-							this.router.navigate(newUrl);
-						}
-						else {
-							this.router.navigate([this.returnUrl]);
-						}
+	public login(value: string): void {
+		this.loginError = false;
+		this.authenticationService.login(this.username, this.password).subscribe(
+			data => {
+				if (data) {
+					if (this.returnUrl === '') {
+						let newUrlString: string = (data.url as string).replace(/\/$/, '');
+						this.log(newUrlString);
+						let newUrl: string[] = newUrlString.split("/");
+						this.log(newUrl);
+						this.router.navigate(newUrl);
 					}
 					else {
-						this.usernameError = this.passwordError = invalidMessage;
+						this.router.navigate([this.returnUrl]);
 					}
-				},
-				error => {
-					this.usernameError = this.passwordError = invalidMessage;
-				});
-		}
+				}
+				else {
+					this.loginError = true;
+				}
+			},
+			error => {
+				this.loginError = true;
+			});
 	}
 	public logout(): void {
 		this.authenticationService.logout().subscribe();

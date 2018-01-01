@@ -41,7 +41,7 @@ public class LandingAction
 	@DefaultHandler
 	public Resolution landingPage()
 	{
-		if (PropertiesManager.getValue(PropertiesManager.KEY_UI_MODE).toLowerCase().equals("angular")) {
+		if (PropertiesManager.getValue(PropertiesManager.KEY_UI_MODE) != null && PropertiesManager.getValue(PropertiesManager.KEY_UI_MODE).toLowerCase().equals("angular")) {
 			return new ForwardResolution("ngIndex.jsp");
 		}
 		appVersion = getApplicationVersion();

@@ -60,22 +60,29 @@ export class AuthenticationService {
 			this.log("no localStorage");
 			return of(false);
 		}
-		//REST endpoint  SecurityUtil.isLoggedIn(); always returning false
-		return of(true);
-		//		return this.http.get<boolean>(url, httpOptions).pipe(
-		//			map(loggedIn => {
-		//				// remove user from local storage to log user out
-		//				if (!loggedIn) {
-		//					localStorage.removeItem('currentUser');
-		//					this.log("seerver check");
-		//				}
-		//				return loggedIn;
-		//			}),
-		//			catchError(_ => {
-		//				this.handleError<any>('isLoggedIn');
-		//				return of(false);
-		//			})
-		//		);
+		else if (localStorage.getItem('skipServerCheck')) {
+			// webpack dev proxy is not passing Auth cookie run the following line to skip secondary server check
+			//window.localStorage.setItem('skipServerCheck',true)
+			// to reset restart browser or run 
+			//window.localStorage.removeItem('skipServerCheck')
+			console.error("webpack dev proxy is not passing Auth cookie skipping server check");
+			return of(true);
+		}
+		return this.http.get<boolean>(url, httpOptions).pipe(
+			map(loggedIn => {
+				this.log(`seerver check Logged in: ${loggedIn}`);
+				// remove user from local storage to log user out
+				if (!loggedIn) {
+					localStorage.removeItem('currentUser');
+				}
+				return loggedIn;
+			}),
+			catchError(_ => {
+				this.handleError<any>('isLoggedIn');
+				localStorage.removeItem('currentUser');
+				return of(false);
+			})
+		);
 	}
 
 	/**

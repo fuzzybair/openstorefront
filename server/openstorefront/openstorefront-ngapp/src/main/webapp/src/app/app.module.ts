@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http'
 import {APP_BASE_HREF, PlatformLocation} from "@angular/common";
-import {FormsModule} from '@angular/forms';
+import {FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //ui elements
@@ -27,7 +27,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrandingService} from './services/branding.service';
 import {AuthenticationService} from './services/authentication.service';
 import {AttributeService} from './services/attribute.service';
-import {LookupTypeService} from './services/lookup-type.service'
+import {LookupTypeService} from './services/lookup-type.service';
 //Guards
 import {LoggedInGuard} from './guards/logged-in.guard';
 //Components
@@ -83,7 +83,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		DropdownModule,
 		DialogModule,
 		EditorModule,
-		CheckboxModule
+		CheckboxModule,
+		ReactiveFormsModule
 	],
 	providers: [
 		BrandingService,
@@ -91,6 +92,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		AttributeService,
 		LookupTypeService,
 		LoggedInGuard,
+		FormBuilder,
 		HttpClientModule,
 		HttpClient,
 		{

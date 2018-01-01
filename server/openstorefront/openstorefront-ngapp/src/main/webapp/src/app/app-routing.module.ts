@@ -33,7 +33,7 @@ const routes: Routes = [
 	},
 	{path: 'UserTool', component: UserToolsComponent, canActivate: [LoggedInGuard]},
 	{path: 'EvaluationTool', component: EvaluationToolsComponent, canActivate: [LoggedInGuard]},
-//	{path: '**', component: PageNotFoundComponent}
+	{path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
