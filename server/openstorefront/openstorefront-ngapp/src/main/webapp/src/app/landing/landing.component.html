@@ -2,6 +2,7 @@
 	<app-landng-page-header [branding]="branding"></app-landng-page-header>
 	<div class="content">
 		<p-galleria *ngIf="getImages().length > 0" [images]="getImages()" panelWidth="500" panelHeight="313" [showCaption]="true"></p-galleria>
+		<div class="chart-title">Entries by Genra</div>
 		<p-chart type="doughnut" [data]="chartData"></p-chart>
 	</div>
 	<app-landng-page-footer></app-landng-page-footer>

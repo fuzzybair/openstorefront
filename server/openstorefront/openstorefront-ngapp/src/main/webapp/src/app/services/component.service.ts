@@ -10,7 +10,7 @@ import {ComponentSearchView} from '../models/component-search-view';
 
 @Injectable()
 export class ComponentService {
-	private restUrl = this.baseHref + 'api/v1/resource/branding';  // URL to web api
+	private restUrl = this.baseHref + 'api/v1/resource/components';  // URL to web api
 
 	constructor(private http: HttpClient, @Inject(APP_BASE_HREF) private baseHref: string) {}
 	//GET

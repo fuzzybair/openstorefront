@@ -12,3 +12,9 @@
 	padding-top: 100px;
 	flex-grow: 1;
 }
+.chart-title{
+	width: 100%;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
