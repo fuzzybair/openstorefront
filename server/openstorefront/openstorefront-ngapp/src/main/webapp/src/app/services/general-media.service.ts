@@ -4,7 +4,7 @@ import {APP_BASE_HREF} from "@angular/common";
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 
 import {GeneralMediaWrapper} from '../models/general-media-wrapper';
 
@@ -26,7 +26,7 @@ export class GeneralMediaService {
 		const url = `${this.restUrl}`;
 		this.log("requesting media");
 		return this.http.get<GeneralMediaWrapper>(url).pipe(
-			tap(data => this.log(`fetched general media ` + data)),
+			tap(data => this.log(`fetched general media ` + JSON.stringify(data))),
 			catchError( this.handleError<GeneralMediaWrapper>('getGeneralMedia'))
 		);
 	}
@@ -53,6 +53,5 @@ export class GeneralMediaService {
 
 	private log(message: any) {
 		console.log(message);
-		//this.messageService.add('HeroService: ' + message);
 	}
 }

@@ -19,7 +19,8 @@ import {
 	DialogModule,
 	EditorModule,
 	CheckboxModule,
-	GalleriaModule
+	GalleriaModule,
+	ChartModule
 } from 'primeng/primeng';
 //####### Storefront items ########
 //Routing
@@ -30,6 +31,8 @@ import {AuthenticationService} from './services/authentication.service';
 import {AttributeService} from './services/attribute.service';
 import {LookupTypeService} from './services/lookup-type.service';
 import {GeneralMediaService} from './services/general-media.service';
+import {ComponentService} from './services/component.service';
+
 //Guards
 import {LoggedInGuard} from './guards/logged-in.guard';
 //Components
@@ -87,7 +90,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		EditorModule,
 		CheckboxModule,
 		ReactiveFormsModule,
-		GalleriaModule
+		GalleriaModule,
+		ChartModule
 	],
 	providers: [
 		BrandingService,
@@ -95,6 +99,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
 		AttributeService,
 		LookupTypeService,
 		GeneralMediaService,
+		ComponentService,
 		LoggedInGuard,
 		FormBuilder,
 		HttpClientModule,

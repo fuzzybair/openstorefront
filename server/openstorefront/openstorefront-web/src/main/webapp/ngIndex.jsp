@@ -40,8 +40,10 @@
 		<link href="//cdn.quilljs.com/1.3.0/quill.core.css" rel="stylesheet">
 		<link href="//cdn.quilljs.com/1.3.0/quill.snow.css" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 		<!-- need to get this working from npm -->
 		<script src="//cdn.quilljs.com/1.3.4/quill.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 		<title>${branding.getApplicationName()}</title>
 		<base href="${pageContext.request.contextPath}/">
 	</head>
