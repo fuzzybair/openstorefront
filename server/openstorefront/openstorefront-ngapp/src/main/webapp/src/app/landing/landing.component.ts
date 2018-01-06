@@ -60,6 +60,7 @@ export class LandingComponent implements OnInit {
 			}),
 			flatMap(group => group.pipe(
 				reduce<ComponentSearchView, {genra: string, count: number}>((total, item) => {
+					debugger;
 					let count: number = 1;
 					let genraLabel: string = "Unknown";
 					let genra = item.attributes.find(f => f.type === "GENRA");
