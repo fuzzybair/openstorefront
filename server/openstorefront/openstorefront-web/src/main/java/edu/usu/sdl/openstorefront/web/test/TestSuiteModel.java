@@ -88,4 +88,8 @@ public class TestSuiteModel
 		this.tests = tests;
 	}
 
+	public long getRunTimeInMills()
+	{
+		return runTimeInMills;
+	}
 }
